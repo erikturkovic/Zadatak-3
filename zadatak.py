@@ -3,13 +3,14 @@ import time
 import multiprocessing
 
 def process_name(name):
-    delay = random.random() * 5
+    delay = random.random() * 3
     time.sleep(delay)
     print(f"PID: {multiprocessing.current_process().pid}, ime: {name}, delay: {delay} sekundi")
 
 if __name__ == '__main__':
     while True:
-        input("Enter za početak")
+        if input("Stisni Enter za početak, napiši 'end' za izlazak: ") == 'end':
+            break
         names = ['lmao','Erik', 'Filip', 'Nevup', 'Perica', 'Ela']
         processes = [multiprocessing.Process(target=process_name, args=(name,)) for name in names]
         for p in processes:
