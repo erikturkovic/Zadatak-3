@@ -3,7 +3,7 @@ import time
 import multiprocessing
 
 def process_name(name):
-    delay = random.random() * 3
+    delay = random.random() * 0.9
     time.sleep(delay)
     print(f"PID: {multiprocessing.current_process().pid}, ime: {name}, delay: {delay} sekundi")
 
@@ -15,5 +15,3 @@ if __name__ == '__main__':
         processes = [multiprocessing.Process(target=process_name, args=(name,)) for name in names]
         for p in processes:
             p.start()
-        for p in processes:
-            p.join()
